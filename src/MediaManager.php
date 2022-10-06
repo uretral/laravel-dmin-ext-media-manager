@@ -69,10 +69,6 @@ class MediaManager extends Extension
         $disk = static::config('disk');
 
         $this->storage = Storage::disk($disk);
-
-        if (!$this->storage->getDriver()->getAdapter() instanceof Local) {
-            Handler::error('Error', '[laravel-admin-ext/media-manager] only works for local storage.');
-        }
     }
 
     public function ls()
