@@ -103,12 +103,7 @@ class MediaManager extends Extension
      */
     protected function getFullPath($path)
     {
-        $fullPath = $this->storage->getDriver()->getAdapter()->applyPathPrefix($path);
-        if (strstr($fullPath, '..')) {
-            throw new \Exception('Incorrect path');
-        }
-
-        return $fullPath;
+        return $this->storage->path($path);
     }
 
     public function download()
@@ -265,13 +260,7 @@ class MediaManager extends Extension
     {
         switch ($this->detectFileType($file)) {
             case 'image':
-
-                if ($this->storage->getDriver()->getConfig()->has('url')) {
-                    $url = $this->storage->url($file);
-                    $preview = "<span class=\"file-icon has-img\"><img src=\"$url\" alt=\"Attachment\"></span>";
-                } else {
-                    $preview = '<span class="file-icon"><i class="fa fa-file-image-o"></i></span>';
-                }
+                $preview = '<span class="file-icon"><i class="fa fa-file-image-o"></i></span>';
                 break;
 
             case 'pdf':
