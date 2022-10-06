@@ -256,7 +256,8 @@ class MediaManager extends Extension
     {
         switch ($this->detectFileType($file)) {
             case 'image':
-                $preview = '<span class="file-icon"><i class="fa fa-file-image-o"></i></span>';
+                //                $preview = '<span class="file-icon"><i class="fa fa-file-image-o"></i></span>';
+                $preview = '<span class="file-icon"><img src="'.asset('storage/'.$file).'"  style="max-width: 70px" alt="'.$file.'"/></span>';
                 break;
 
             case 'pdf':
